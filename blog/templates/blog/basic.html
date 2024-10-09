@@ -1,0 +1,264 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    {% block head%}{%endblock%}
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+   
+
+    <!---style-->
+    <style>
+      body {
+        background-color: #FAF3E0; /* Light skin color */
+        font-family: 'Arial', sans-serif; /* Custom font */
+    }
+    .navbar {
+        background-color: #0056b3 !important; /* Dark blue color */
+    }
+    .navbar-brand {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+        color: #fff !important;
+        margin-right: 15px;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #FFD700 !important; /* Gold color on hover */
+    }
+    .btn-outline-success {
+        color: #FFD700;
+        border-color: #FFD700;
+    }
+    .btn-outline-success:hover {
+        background-color: #FFD700;
+        color: #0056b3;
+    }
+    .btn-secondary {
+        color: #fff;
+        background-color: #FFD700;
+        border-color: #FFD700;
+    }
+    .btn-secondary:hover {
+        background-color: #e6c200;
+        border-color: #e6c200;
+    }
+    .form-control {
+        border-radius: 0;
+    }
+    #popoverButton {
+        margin-left: 15px;
+    }
+  
+        {% block css%} {%endblock%}
+     
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/shop">ShopEase</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/about">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/tracker">Tracker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Blog</a>
+      </li>
+        
+       
+        {% block nav %} {% endblock %}
+        
+      </ul>
+      <form class="form-inline my-2 my-lg-0 mx-2">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+   <!---(<span id="cartcounter">0</span>)--->
+   <button  type="button" class="btn btn-secondary" id="popoverButton"  data-placement="bottom" data-html="true">
+ Your Cart(<span id="cart">0</span>)
+</button>
+ 
+
+      
+    </div>
+  </nav>
+  {% block body%}{%endblock%}
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <!-- Custom JS -->
+    
+    
+    {% block js %}{% endblock %}
+
+  
+ 
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% block head %}{% endblock %}
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f2f5; /* Light grey background for premium look */
+            font-family: 'Roboto', sans-serif; /* Modern and clean font */
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #ffffff !important; /* White background for the navbar */
+            border-bottom: 1px solid #e7e7e7;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #007bff !important; /* Premium blue color */
+        }
+        .navbar-nav .nav-link {
+            color: #555555 !important; /* Dark grey text */
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #007bff !important; /* Premium blue on hover */
+        }
+        .btn-outline-success {
+            color: #007bff;
+            border-color: #007bff;
+            border-width: 2px;
+            border-radius: 50px; /* Rounded button for modern look */
+        }
+        .btn-outline-success:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .btn-secondary {
+            color: #ffffff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+            border-width: 2px;
+            border-radius: 50px; /* Rounded button for modern look */
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+        .form-control {
+            border-radius: 50px;
+            border: 1px solid #ced4da;
+            padding: 0.5rem 1rem;
+        }
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+        #popoverButton {
+            margin-left: 15px;
+        }
+        .container {
+            flex: 1;
+        }
+        footer {
+            background-color: #ffffff;
+            padding: 1rem 0;
+            text-align: center;
+            border-top: 1px solid #e7e7e7;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            width: 100%;
+        }
+        .footer-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        {% block css %}{% endblock %}
+    </style>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0" nonce="VJ6q6CTC"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/shop">ShopEase</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/about">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/tracker">Tracker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog">Blog</a>
+        </li>
+        {% block nav %}{% endblock %}
+      </ul>
+      <form class="form-inline my-2 my-lg-0 mx-2">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <button type="button" class="btn btn-secondary" id="popoverButton" data-placement="bottom" data-html="true">
+        Your Cart (<span id="cart">0</span>)
+      </button>
+    </div>
+  </nav>
+  <div class="container">
+    {% block body %}{% endblock %}
+  </div>
+
+  <footer>
+      <div class="container">
+          <p class="footer-text">&copy; 2024 ShopEase. All rights reserved.</p>
+      </div>
+  </footer>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  {% block js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends 'shop/basic.html'%}
+{%block title%}{{product.product_name}}{%endblock%}
+{%block body%} 
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+       <img src="/media//{{product.image}}" width="233px" height="385px">
+    </div>
+        </div>
+        <div class="col-md-8">
+            <h5>{{product.product_name}}</h5>
+            <p><b> Rs. {{product.price}}</b></p>
+            <p>{{product.desc}}</p>
+        </div>
+        <div class="row">
+        <button class="btn btn-primary mx-2"> Buy Now</button>
+        <button class="btn btn-primary mx-2 "> Add To Cart</button>
+        </div>
+        </div>
+</div>
+{%endblock%}
+{% block js %}
+<script>
+
+if(localStorage.getItem('cart') == null){
+  var cart = {}; // if it does not exist then create a new cart caart is like map
+}
+else{
+  cart = JSON.parse(localStorage.getItem('cart'));  //it is used to convert the string representation of cart object into javascript object name cart
+  document.getElementById('cartcounter').innerHTML = Object.keys(cart).length; //it will store the cartcounter in cart section and we can see no.  of products in cart  even after refreshing the site 
+}
+// now declaring a class in add to cart line and removing its a tag and making it a button tag and creating a id in that button tag
+$('.cart').click(function(){
+ 
+  var idstr = this.id.toString(); //if it is clicked then create a variabale idstr and  store the id of the button that is clicked 
+  // now after clicking a button and aft6er storing it in idstr now check if cart[idstr ] already exist
+  // and if it exist increase value of cart[idstr] by1 else create a new cart with cart[idstr] and assign it a value 1 as it is clicked 
+  if (cart[idstr] !=undefined){
+    cart[idstr]=cart[idstr]+1;
+  }
+  else{
+    cart[idstr]=1;
+  }
+  console.log(cart);
+  localStorage.setItem('cart', JSON.stringify(cart)); //this store the cart into the localstorage so that if the page is refresed it will be still store in localstorage 
+  document.getElementById('cartcounter').innerHTML = Object.keys(cart).length; //as we increase the new product if update the cartcounter and we will be shown the new product in cart section
+});
+
+
+
+</script>
+{% endblock %}
